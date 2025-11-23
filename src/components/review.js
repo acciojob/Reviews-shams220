@@ -1,8 +1,8 @@
-import React,{useState} from 'react';
-import './review.css'
-const Review=()=>{
-    const [k ,setKey] = useState(1);
-    const arr = [
+import React, { useState } from "react";
+import "./review.css";
+const Review = () => {
+  const [k, setKey] = useState(1);
+  const arr = [
     {
       id: 1,
       name: "susan smith",
@@ -37,59 +37,62 @@ const Review=()=>{
     },
   ];
 
-  const randomReview=()=>{
-    let n = arr.length;
-    const rndm = Math.floor(Math.random()*n);
-    setKey(rndm)
-    // console.log("random",rndm)
+  const randomReview = () => {
+     let n = arr.length;
+  let rndm = Math.floor(Math.random() * n);
+
+  if (rndm === k) {
+    rndm = (k + 1) % n;   
   }
-const item = arr[k];
-const previous=()=>{
-if(k>0){
-    setKey(k-1);
 
-}
-}
-const next = ()=>{
-    if(k<arr.length){
-    setKey(k+1)
-
+  setKey(rndm);
+    // console.log("random",rndm)
+  };
+  const item = arr[k];
+  const previous = () => {
+    if (k === 0) {
+      setKey(arr.length-1);
+    }else{
+        setKey(k-1);
     }
-}
-  
-return (
-     <div className='main-div'
-      style={{
+  };
+  const next = () => {
+    if (k === arr.length-1) {
+      setKey(0);
+    }else{
+        setKey(k+1);
+    }
+  };
 
+  return (
+    <div
+      className="main-div"
+      style={{
         height: "100vh",
         padding: "20px",
-      }}
-    >
-      <h1>shams</h1>
-      <div id="review-heading">
-        {/* {arr.map((value,key) => (
-          <div className="review" key={k}>
-            <h2 className="author">Author:{value.name}</h2>
-            <h3 className="job">Job:{value.job}</h3>
-            <p className="info">Info:{value.text}</p>
-            <img src={value.image} className="person-img" alt=""/>
-          </div>
-        ))} */}
-
+      }}>
+      <div>
         <div className="review">
-            <h2 className="author">Author:{item.name}</h2>
-            <h3 className="job">Job:{item.job}</h3>
-            <p className="info">Info:{item.text}</p>
-            <img src={item.image} alt="" className="person-img" />
+          {/* <h2 className="author">Author:{item.name}</h2> */}
+          <h2 id={`author-${item.id}`}>{item.name}</h2>
+
+          <h3 className="job">Job:{item.job}</h3>
+          <p className="info">Info:{item.text}</p>
+          <img src={item.image} alt="" className="person-img" />
         </div>
       </div>
       <div>
-        <button className='random-btn' onClick={randomReview}>surprise me</button>
-        <button onClick={previous}>prev</button>
-        <button onClick={next}>next</button>
+        <button className="random-btn" onClick={randomReview}>
+          surprise me
+        </button>
+        <button onClick={previous} className="prev-btn">
+          prev
+        </button>
+        <button onClick={next} className="next-btn">
+          next
+        </button>
       </div>
     </div>
-)
-    
-}
-export default Review
+  );
+};
+export default Review;
