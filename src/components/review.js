@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./review.css";
 const Review = () => {
-  const [k, setKey] = useState(1);
+  const [k, setKey] = useState(0);
   const arr = [
     {
       id: 1,
@@ -66,19 +66,15 @@ const Review = () => {
 
   return (
     <div
-      className="main-div"
-      style={{
-        height: "100vh",
-        padding: "20px",
-      }}>
+      className="main-div">
       <div>
         <div className="review">
-          {/* <h2 className="author">Author:{item.name}</h2> */}
-          <h2 id={`author-${item.id}`}>{item.name}</h2>
+          <img src={item.image} alt={item.name} className="person-img" />
 
-          <h3 className="job">Job:{item.job}</h3>
-          <p className="info">Info:{item.text}</p>
-          <img src={item.image} alt="" className="person-img" />
+          <h2 className="author" id={`author-${item.id}`}>{item.name}</h2>
+
+          <h3 className="job">{item.job}</h3>
+          <p className="info">{item.text}</p>
         </div>
       </div>
       <div>
