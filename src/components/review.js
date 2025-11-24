@@ -67,7 +67,8 @@ const Review = () => {
   return (
     <div
       className="main-div">
-      <div className="review">
+      
+      
         <div className="review">
           <img src={item.image} alt={item.name} className="person-img" />
 
@@ -76,7 +77,7 @@ const Review = () => {
           <h3 className="job">{item.job}</h3>
           <p className="info">{item.text}</p>
         </div>
-      </div>
+      
       <div>
         <button className="random-btn" onClick={randomReview}>
           surprise me
@@ -90,5 +91,5 @@ const Review = () => {
       </div>
     </div>
   );
-};
+}
 export default Review;
