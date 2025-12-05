@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./review.css";
-const Review = () => {
-  const [k, setKey] = useState(0);
-  const arr = [
+
+ const arr = [
     {
       id: 1,
       name: "susan smith",
@@ -37,48 +36,50 @@ const Review = () => {
     },
   ];
 
+const Review = () => {
+  
+  const [k, setKey] = useState(0);
+ 
+
   const randomReview = () => {
-     let n = arr.length;
-  let rndm = Math.floor(Math.random() * n);
+    let n = arr.length;
+    let rndm = Math.floor(Math.random() * n);
 
-  if (rndm === k) {
-    rndm = (k + 1) % n;   
-  }
+    if (rndm === k) {
+      rndm = (k + 1) % n;
+    }
 
-  setKey(rndm);
+    setKey(rndm);
     // console.log("random",rndm)
   };
   const item = arr[k];
   const previous = () => {
     if (k === 0) {
-      setKey(arr.length-1);
-    }else{
-        setKey(k-1);
+      setKey(arr.length - 1);
+    } else {
+      setKey(k - 1);
     }
   };
   const next = () => {
-    if (k === arr.length-1) {
+    if (k === arr.length - 1) {
       setKey(0);
-    }else{
-        setKey(k+1);
+    } else {
+      setKey(k + 1);
     }
   };
 
   return (
-    <div
-      className="main-div">
-      
-      
-        <div className="review">
-          <img src={item.image} alt={item.name} className="person-img" />
+    <div className="main-div">
+      <div className="review">
+        <img src={item.image} alt={item.name} className="person-img" />
 
-          <h2 className="author" id={`author-${item.id}`}>{item.name}</h2>
+        <h2 className="author" id={`author-${item.id}`}>
+          {item.name}
+        </h2>
 
-          <h3 className="job">{item.job}</h3>
-          <p className="info">{item.text}</p>
-        </div>
-      
-      <div>
+        <h4 className="job">{item.job}</h4>
+        <p className="info">{item.text}</p>
+         <div>
         <button className="random-btn" onClick={randomReview}>
           surprise me
         </button>
@@ -89,7 +90,10 @@ const Review = () => {
           next
         </button>
       </div>
+      </div>
+
+     
     </div>
   );
-}
+};
 export default Review;
